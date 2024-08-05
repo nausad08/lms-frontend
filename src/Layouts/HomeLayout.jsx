@@ -3,6 +3,7 @@ import {FiMenu} from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
 import { useDispatch, useSelector } from "react-redux"
+import { logout } from "../Redux/Slices/AuthSlice"
 
 const HomeLayout = ({children}) => {
 
@@ -29,10 +30,10 @@ const HomeLayout = ({children}) => {
     drawerSide[0].style.width ="0";
 
   }
-  const handleLogout =(e)=>{
+   const handleLogout = async (e)=>{
     e.preventDefault();
-    // const res = await dispatch(logout())
-    // if(res?.payload?.success)
+    const res = await dispatch(logout())
+    if(res?.payload?.success)
     navigate("/")
   }
 
